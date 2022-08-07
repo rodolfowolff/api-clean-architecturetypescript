@@ -6,7 +6,7 @@ export type SectorType = { id: number; name: string };
 
 export type UserType = {
   id: number;
-  firtname: string;
+  firstname: string;
   lastname: string;
   telephone: string;
   password: string;
@@ -15,7 +15,7 @@ export type UserType = {
   status: boolean;
   created_at: Date;
   updated_at: Date;
-  deleted_at: Date;
+  deleted_at: Date | null;
 };
 
 export class User {
@@ -25,6 +25,7 @@ export class User {
     this.props = {
       ...props,
       daysService: props.daysService || [], // Se não tiver daysService, atribui um array vazio
+      deleted_at: props.deleted_at || null, // Se não tiver deleted_at, atribui null
     };
   }
 }
