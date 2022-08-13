@@ -45,7 +45,17 @@ export class User {
     };
   }
 
-  // PUBLIC = PODE SER ACESSADO FORA DA CLASSE
+  updateSector(sector: SectorType) {
+    // AQUI FICA AS VALIDAÇÕES, ALTERAÇÕES, ETC
+    this.props.sector = [sector];
+  }
+
+  updateDaysService(daysService: number[]) {
+    // AQUI FICA AS VALIDAÇÕES, ALTERAÇÕES, ETC
+    this.props.daysService = daysService;
+  }
+
+  // GET PODE SER PUBLIC = PODE SER ACESSADO FORA DA CLASSE
   get userinfo() {
     return {
       firstname: this.props.firstname,
@@ -54,7 +64,7 @@ export class User {
     };
   }
 
-  // PRIVADO = NÃO PODE SER ACESSADO FORA DA CLASSE
+  // SET SOMENTE PRIVADO = NÃO PODE SER ACESSADO FORA DA CLASSE
   private set userinfo(userinfo: UserInfo) {
     this.props.firstname = userinfo.firstname || this.props.firstname;
     this.props.lastname = userinfo.lastname || this.props.lastname;
