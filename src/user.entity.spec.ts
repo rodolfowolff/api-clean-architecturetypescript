@@ -1,6 +1,6 @@
 import { User, UserType } from "./user.entity";
 
-describe("User Tests", () => {
+describe("User Entity Tests", () => {
   it("constructor", () => {
     let userProps: UserType = {
       id: 1,

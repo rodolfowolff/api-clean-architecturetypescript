@@ -5,7 +5,7 @@
 export type SectorType = { id: number; name: string };
 
 export type UserType = {
-  id: number;
+  id?: number | null;
   firstname: string;
   lastname: string;
   telephone: string;
@@ -15,7 +15,7 @@ export type UserType = {
   status: boolean;
   created_at: Date;
   updated_at: Date;
-  deleted_at: Date | null;
+  deleted_at?: Date | null;
 };
 
 export type UserInfo = {
@@ -30,12 +30,13 @@ export class User {
   constructor(props: UserType) {
     this.props = {
       ...props,
+      id: props.id || null,
       daysService: props.daysService || [], // Se não tiver daysService, atribui um array vazio
       deleted_at: props.deleted_at || null, // Se não tiver deleted_at, atribui null
     };
   }
 
-  // METODOs PARA ATUALIZAR OS DADOS DO USUARIO
+  // METODOs(regras de negocio) PARA ATUALIZAR OS DADOS DO USUARIO
   updateUserInfo(userinfo: UserInfo) {
     this.props = {
       ...this.props,
@@ -47,13 +48,14 @@ export class User {
 
   updateSector(sector: SectorType) {
     // AQUI FICA AS VALIDAÇÕES, ALTERAÇÕES, ETC
-    this.props.sector = [sector];
+    this.sector = [sector];
   }
 
   updateDaysService(daysService: number[]) {
     // AQUI FICA AS VALIDAÇÕES, ALTERAÇÕES, ETC
-    this.props.daysService = daysService;
+    this.daysService = daysService;
   }
+  // FIM DOS METODOS PARA ATUALIZAR OS DADOS DO USUARIO
 
   // GET PODE SER PUBLIC = PODE SER ACESSADO FORA DA CLASSE
   get userinfo() {
@@ -69,5 +71,25 @@ export class User {
     this.props.firstname = userinfo.firstname || this.props.firstname;
     this.props.lastname = userinfo.lastname || this.props.lastname;
     this.props.telephone = userinfo.telephone || this.props.telephone;
+  }
+
+  get sector() {
+    return this.props.sector;
+  }
+
+  private set sector(sector: SectorType[]) {
+    this.props.sector = sector;
+  }
+
+  get daysService() {
+    return this.props.daysService;
+  }
+
+  private set daysService(daysService: number[]) {
+    this.props.daysService = daysService;
+  }
+
+  toJSON() {
+    return this.props;
   }
 }
