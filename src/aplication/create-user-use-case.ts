@@ -1,5 +1,5 @@
-import { SectorType, User } from "./user.entity";
-import { UserRepositoryInterface } from "./user.repository";
+import { SectorType, User } from "../domain/user.entity";
+import { UserRepositoryInterface } from "../domain/user.repository";
 
 export class CreateUserUseCase {
   constructor(private userRepository: UserRepositoryInterface) {}

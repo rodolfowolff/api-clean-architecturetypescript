@@ -1,0 +1,1 @@
+APLICATION: é onde fica todos os arquivos relacionados aos casos de uso que executam as 'ações/entity' do sistema
