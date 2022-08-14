@@ -1,8 +1,12 @@
 import { SectorType, User } from "./user.entity";
+import { UserRepositoryInterface } from "./user.repository";
 
 export class CreateUserUseCase {
+  constructor(private userRepository: UserRepositoryInterface) {}
+
   async execute(input: CreateUserInput): Promise<CreateUserOutput> {
     const user = new User(input);
+    await this.userRepository.insert(user); // INSERE O USUARIO NO 'BANCO DE DADOS' (inversão de dependência)
     return user.toJSON();
   }
 }

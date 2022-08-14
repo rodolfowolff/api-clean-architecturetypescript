@@ -1,7 +1,4 @@
-/* 
-  ENTIDADE = REGRAS DE NEGOCIO NÂO DEPENDEM DE OUTROS 'RECURSOS'
-*/
-
+/* ENTIDADE = REGRAS DE NEGOCIO NÂO DEPENDEM DE OUTROS 'RECURSOS'*/
 export type SectorType = { id: number; name: string };
 
 export type UserType = {
